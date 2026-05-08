@@ -4,159 +4,181 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>LYNQUP Certificate Verification</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
     }
 
-    body {
-      background: #f3f3f3;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
+    body{
+      background:#f3f3f3;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:30px;
     }
 
-    .container {
-      width: 100%;
-      max-width: 850px;
-      background: white;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    .container{
+      width:100%;
+      max-width:950px;
+      background:white;
+      padding:40px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
     }
 
-    .logo {
-      text-align: center;
-      margin-bottom: 25px;
+    .logo{
+      text-align:center;
+      margin-bottom:25px;
     }
 
-    .logo h1 {
-      color: #6a00ff;
-      font-size: 55px;
-      font-weight: bold;
+    .logo h1{
+      font-size:60px;
+      color:#6a00ff;
+      font-weight:bold;
     }
 
-    .logo p {
-      font-size: 18px;
-      margin-top: 5px;
+    .logo p{
+      font-size:20px;
+      color:#444;
+      margin-top:5px;
     }
 
-    .search-box {
-      margin-top: 20px;
+    .search-box{
+      margin-top:25px;
     }
 
-    .search-box input {
-      width: 100%;
-      padding: 18px;
-      border-radius: 12px;
-      border: 2px solid #222;
-      font-size: 20px;
-      margin-bottom: 18px;
+    .search-box input{
+      width:100%;
+      padding:18px;
+      border-radius:12px;
+      border:2px solid #222;
+      font-size:20px;
+      margin-bottom:15px;
     }
 
-    .search-box button {
-      width: 100%;
-      padding: 18px;
-      border: none;
-      border-radius: 12px;
-      background: linear-gradient(to right, #5f00ff, #8f00ff);
-      color: white;
-      font-size: 22px;
-      font-weight: bold;
-      cursor: pointer;
+    .search-box button{
+      width:100%;
+      padding:18px;
+      border:none;
+      border-radius:12px;
+      background:linear-gradient(to right,#5f00ff,#8f00ff);
+      color:white;
+      font-size:22px;
+      font-weight:bold;
+      cursor:pointer;
     }
 
-    .search-box button:hover {
-      opacity: 0.9;
+    .search-box button:hover{
+      opacity:0.9;
     }
 
-    .verified-section {
-      margin-top: 45px;
-      display: none;
+    .result-box{
+      margin-top:45px;
+      display:none;
     }
 
-    .verified-icon {
-      width: 120px;
-      height: 120px;
-      background: #19b96b;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: auto;
-      color: white;
-      font-size: 70px;
-      font-weight: bold;
+    .verified-icon{
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:#18b86a;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin:auto;
+      color:white;
+      font-size:70px;
+      font-weight:bold;
     }
 
-    .verified-title {
-      text-align: center;
-      color: #19b96b;
-      font-size: 52px;
-      margin-top: 20px;
-      margin-bottom: 35px;
-      font-weight: bold;
+    .verified-title{
+      text-align:center;
+      color:#18b86a;
+      font-size:50px;
+      font-weight:bold;
+      margin-top:20px;
+      margin-bottom:35px;
     }
 
-    .detail-row {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid #ddd;
-      padding: 20px 0;
-      gap: 20px;
+    .certificate-image-box{
+      text-align:center;
+      margin-bottom:35px;
     }
 
-    .label {
-      font-weight: bold;
-      color: #555;
-      font-size: 28px;
+    .certificate-image-box img{
+      width:100%;
+      max-width:750px;
+      border-radius:15px;
+      border:2px solid #ddd;
+      box-shadow:0 5px 20px rgba(0,0,0,0.1);
     }
 
-    .value {
-      color: #222;
-      font-size: 28px;
-      text-align: right;
+    .detail-row{
+      display:flex;
+      justify-content:space-between;
+      padding:20px 0;
+      border-bottom:1px solid #ddd;
+      gap:20px;
     }
 
-    .verified-status {
-      color: #19b96b;
-      font-weight: bold;
+    .label{
+      font-size:26px;
+      font-weight:bold;
+      color:#555;
     }
 
-    .footer {
-      margin-top: 35px;
-      text-align: center;
-      color: #666;
-      font-size: 16px;
+    .value{
+      font-size:26px;
+      color:#222;
+      text-align:right;
     }
 
-    @media(max-width:700px) {
+    .verified-status{
+      color:#18b86a;
+      font-weight:bold;
+    }
 
-      .detail-row {
-        flex-direction: column;
+    .footer{
+      text-align:center;
+      margin-top:35px;
+      color:#666;
+      font-size:16px;
+    }
+
+    @media(max-width:700px){
+
+      .detail-row{
+        flex-direction:column;
       }
 
-      .value {
-        text-align: left;
+      .value{
+        text-align:left;
       }
 
-      .verified-title {
-        font-size: 38px;
+      .verified-title{
+        font-size:38px;
       }
 
       .label,
-      .value {
-        font-size: 22px;
+      .value{
+        font-size:20px;
+      }
+
+      .logo h1{
+        font-size:45px;
       }
     }
+
   </style>
+
 </head>
 
 <body>
@@ -169,13 +191,20 @@
     </div>
 
     <div class="search-box">
-      <input type="text" id="certificateId" placeholder="Enter Certificate ID">
+
+      <input
+        type="text"
+        id="certificateId"
+        placeholder="Enter Certificate ID"
+      >
+
       <button onclick="verifyCertificate()">
         Verify Certificate
       </button>
+
     </div>
 
-    <div class="verified-section" id="result">
+    <div class="result-box" id="resultBox">
 
       <div class="verified-icon">
         ✓
@@ -184,6 +213,20 @@
       <div class="verified-title">
         Certificate Verified
       </div>
+
+      <!-- CERTIFICATE IMAGE -->
+
+      <div class="certificate-image-box">
+
+        <img
+          id="certificateImage"
+          src=""
+          alt="Certificate Image"
+        >
+
+      </div>
+
+      <!-- DETAILS -->
 
       <div class="detail-row">
         <div class="label">Certificate ID</div>
@@ -212,14 +255,15 @@
 
       <div class="detail-row">
         <div class="label">Verification Status</div>
+
         <div class="value verified-status">
           VERIFIED
         </div>
       </div>
 
       <div class="footer">
-        This certificate has been digitally verified by
-        LYNQUP PRIVATE LIMITED.
+        This certificate has been digitally verified
+        by LYNQUP PRIVATE LIMITED.
       </div>
 
     </div>
@@ -236,14 +280,24 @@
         name: "Lakshya Utreja",
         event: "PROMPT BUILDER 2026",
         date: "20 February 2026",
-        organization: "LYNQUP PRIVATE LIMITED"
+        organization: "LYNQUP PRIVATE LIMITED",
+        image: "images/pb26-110.png"
       },
 
       "PB26-107": {
         name: "Rhea Tiwary",
         event: "PROMPT BUILDER 2026",
         date: "20 February 2026",
-        organization: "LYNQUP PRIVATE LIMITED"
+        organization: "LYNQUP PRIVATE LIMITED",
+        image: "images/pb26-107.png"
+      },
+
+      "PB26-105": {
+        name: "Muskan Lanjiwar",
+        event: "PROMPT BUILDER 2026",
+        date: "20 February 2026",
+        organization: "LYNQUP PRIVATE LIMITED",
+        image: "images/pb26-105.png"
       }
 
     };
@@ -259,12 +313,16 @@
         .value
         .trim();
 
-      if (certificates[enteredId]) {
+      if(certificates[enteredId]) {
 
         let cert = certificates[enteredId];
 
-        document.getElementById("result")
+        // SHOW RESULT BOX
+
+        document.getElementById("resultBox")
           .style.display = "block";
+
+        // SHOW DETAILS
 
         document.getElementById("cid")
           .innerText = enteredId;
@@ -281,13 +339,18 @@
         document.getElementById("org")
           .innerText = cert.organization;
 
+        // SHOW CERTIFICATE IMAGE
+
+        document.getElementById("certificateImage")
+          .src = cert.image;
+
       }
 
       else {
 
         alert("Certificate Not Found");
 
-        document.getElementById("result")
+        document.getElementById("resultBox")
           .style.display = "none";
       }
     }
@@ -301,7 +364,7 @@
 
     const certId = urlParams.get('id');
 
-    if (certId) {
+    if(certId){
 
       document.getElementById("certificateId")
         .value = certId;
