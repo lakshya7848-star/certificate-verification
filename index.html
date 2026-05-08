@@ -206,27 +206,59 @@
 
   </div>
 
-  <script>
+ <script>
 
-    function verifyCertificate(){
+  const certificates = {
 
-      let enteredId = document.getElementById("certificateId").value.trim();
+    "PB26-110": {
+      name: "Lakshya Utreja",
+      event: "PROMPT BUILDER 2026"
+    },
 
-      if(enteredId === "PB26-110"){
-
-        document.getElementById("result").classList.remove("hidden");
-
-        document.getElementById("cid").innerText = enteredId;
-
-      } else {
-
-        alert("Certificate Not Found");
-
-        document.getElementById("result").classList.add("hidden");
-      }
+    "PB26-111": {
+      name: "Rhea Tiwary",
+      event: "PROMPT BUILDER 2026"
     }
 
-  </script>
+  };
+
+  function verifyCertificate(){
+
+    let enteredId =
+      document.getElementById("certificateId").value.trim();
+
+    if(certificates[enteredId]){
+
+      document.getElementById("result")
+      .classList.remove("hidden");
+
+      document.getElementById("cid")
+      .innerText = enteredId;
+
+    } else {
+
+      alert("Certificate Not Found");
+
+      document.getElementById("result")
+      .classList.add("hidden");
+    }
+  }
+
+  // STEP 8 AUTO URL VERIFICATION
+
+  const urlParams =
+    new URLSearchParams(window.location.search);
+
+  const certId = urlParams.get('id');
+
+  if(certId){
+
+    document.getElementById("certificateId").value = certId;
+
+    verifyCertificate();
+  }
+
+</script>
 
 </body>
 </html>
