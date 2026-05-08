@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certificate Verification</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      background:#f4f4f4;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      padding:20px;
+    }
+
+    .container{
+      width:100%;
+      max-width:700px;
+      background:white;
+      border-radius:18px;
+      padding:40px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .logo{
+      text-align:center;
+      margin-bottom:20px;
+    }
+
+    .logo h1{
+      color:#6a00ff;
+      font-size:40px;
+    }
+
+    .verified{
+      text-align:center;
+      margin-bottom:25px;
+    }
+
+    .verified .badge{
+      width:90px;
+      height:90px;
+      background:#15b86a;
+      border-radius:50%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin:auto;
+      color:white;
+      font-size:45px;
+      font-weight:bold;
+    }
+
+    .verified h2{
+      margin-top:15px;
+      color:#15b86a;
+      font-size:32px;
+    }
+
+    .details{
+      margin-top:30px;
+    }
+
+    .row{
+      display:flex;
+      justify-content:space-between;
+      padding:16px 0;
+      border-bottom:1px solid #ddd;
+      gap:20px;
+    }
+
+    .label{
+      font-weight:bold;
+      color:#555;
+    }
+
+    .value{
+      text-align:right;
+      color:#111;
+    }
+
+    .footer{
+      margin-top:35px;
+      text-align:center;
+      color:#666;
+      font-size:14px;
+    }
+
+    .search-box{
+      margin-bottom:30px;
+    }
+
+    .search-box input{
+      width:100%;
+      padding:14px;
+      border:1px solid #ccc;
+      border-radius:10px;
+      font-size:16px;
+      margin-bottom:12px;
+    }
+
+    .search-box button{
+      width:100%;
+      padding:14px;
+      border:none;
+      background:#6a00ff;
+      color:white;
+      border-radius:10px;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .search-box button:hover{
+      background:#4e00c2;
+    }
+
+    .hidden{
+      display:none;
+    }
+
+    @media(max-width:600px){
+      .row{
+        flex-direction:column;
+      }
+
+      .value{
+        text-align:left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="logo">
+      <h1>LYNQUP</h1>
+      <p>Certificate Verification Portal</p>
+    </div>
+
+    <div class="search-box">
+      <input type="text" id="certificateId" placeholder="Enter Certificate ID">
+      <button onclick="verifyCertificate()">Verify Certificate</button>
+    </div>
+
+    <div id="result" class="hidden">
+
+      <div class="verified">
+        <div class="badge">✓</div>
+        <h2>Certificate Verified</h2>
+      </div>
+
+      <div class="details">
+
+        <div class="row">
+          <div class="label">Certificate ID</div>
+          <div class="value" id="cid"></div>
+        </div>
+
+        <div class="row">
+          <div class="label">Participant Name</div>
+          <div class="value">Lakshya Utreja</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Event</div>
+          <div class="value">PROMPT BUILDER 2026</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Issue Date</div>
+          <div class="value">20 February 2026</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Organization</div>
+          <div class="value">LYNQUP PRIVATE LIMITED</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Verification Status</div>
+          <div class="value" style="color:#15b86a;font-weight:bold;">
+            VERIFIED
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer">
+        This digital verification confirms that the certificate
+        is officially recorded in the verification system.
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    function verifyCertificate(){
+
+      let enteredId = document.getElementById("certificateId").value.trim();
+
+      if(enteredId === "PB26-110"){
+
+        document.getElementById("result").classList.remove("hidden");
+
+        document.getElementById("cid").innerText = enteredId;
+
+      } else {
+
+        alert("Certificate Not Found");
+
+        document.getElementById("result").classList.add("hidden");
+      }
+    }
+
+  </script>
+
+</body>
+</html>
