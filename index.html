@@ -1,140 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Certificate Verification</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LYNQUP Certificate Verification</title>
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: Arial, sans-serif;
     }
 
-    body{
-      background:#f4f4f4;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      min-height:100vh;
-      padding:20px;
+    body {
+      background: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
     }
 
-    .container{
-      width:100%;
-      max-width:700px;
-      background:white;
-      border-radius:18px;
-      padding:40px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    .container {
+      width: 100%;
+      max-width: 850px;
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     }
 
-    .logo{
-      text-align:center;
-      margin-bottom:20px;
+    .logo {
+      text-align: center;
+      margin-bottom: 25px;
     }
 
-    .logo h1{
-      color:#6a00ff;
-      font-size:40px;
+    .logo h1 {
+      color: #6a00ff;
+      font-size: 55px;
+      font-weight: bold;
     }
 
-    .verified{
-      text-align:center;
-      margin-bottom:25px;
+    .logo p {
+      font-size: 18px;
+      margin-top: 5px;
     }
 
-    .verified .badge{
-      width:90px;
-      height:90px;
-      background:#15b86a;
-      border-radius:50%;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      margin:auto;
-      color:white;
-      font-size:45px;
-      font-weight:bold;
+    .search-box {
+      margin-top: 20px;
     }
 
-    .verified h2{
-      margin-top:15px;
-      color:#15b86a;
-      font-size:32px;
+    .search-box input {
+      width: 100%;
+      padding: 18px;
+      border-radius: 12px;
+      border: 2px solid #222;
+      font-size: 20px;
+      margin-bottom: 18px;
     }
 
-    .details{
-      margin-top:30px;
+    .search-box button {
+      width: 100%;
+      padding: 18px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(to right, #5f00ff, #8f00ff);
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
     }
 
-    .row{
-      display:flex;
-      justify-content:space-between;
-      padding:16px 0;
-      border-bottom:1px solid #ddd;
-      gap:20px;
+    .search-box button:hover {
+      opacity: 0.9;
     }
 
-    .label{
-      font-weight:bold;
-      color:#555;
+    .verified-section {
+      margin-top: 45px;
+      display: none;
     }
 
-    .value{
-      text-align:right;
-      color:#111;
+    .verified-icon {
+      width: 120px;
+      height: 120px;
+      background: #19b96b;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      color: white;
+      font-size: 70px;
+      font-weight: bold;
     }
 
-    .footer{
-      margin-top:35px;
-      text-align:center;
-      color:#666;
-      font-size:14px;
+    .verified-title {
+      text-align: center;
+      color: #19b96b;
+      font-size: 52px;
+      margin-top: 20px;
+      margin-bottom: 35px;
+      font-weight: bold;
     }
 
-    .search-box{
-      margin-bottom:30px;
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+      padding: 20px 0;
+      gap: 20px;
     }
 
-    .search-box input{
-      width:100%;
-      padding:14px;
-      border:1px solid #ccc;
-      border-radius:10px;
-      font-size:16px;
-      margin-bottom:12px;
+    .label {
+      font-weight: bold;
+      color: #555;
+      font-size: 28px;
     }
 
-    .search-box button{
-      width:100%;
-      padding:14px;
-      border:none;
-      background:#6a00ff;
-      color:white;
-      border-radius:10px;
-      font-size:16px;
-      cursor:pointer;
-      transition:0.3s;
+    .value {
+      color: #222;
+      font-size: 28px;
+      text-align: right;
     }
 
-    .search-box button:hover{
-      background:#4e00c2;
+    .verified-status {
+      color: #19b96b;
+      font-weight: bold;
     }
 
-    .hidden{
-      display:none;
+    .footer {
+      margin-top: 35px;
+      text-align: center;
+      color: #666;
+      font-size: 16px;
     }
 
-    @media(max-width:600px){
-      .row{
-        flex-direction:column;
+    @media(max-width:700px) {
+
+      .detail-row {
+        flex-direction: column;
       }
 
-      .value{
-        text-align:left;
+      .value {
+        text-align: left;
+      }
+
+      .verified-title {
+        font-size: 38px;
+      }
+
+      .label,
+      .value {
+        font-size: 22px;
       }
     }
   </style>
@@ -151,114 +170,147 @@
 
     <div class="search-box">
       <input type="text" id="certificateId" placeholder="Enter Certificate ID">
-      <button onclick="verifyCertificate()">Verify Certificate</button>
+      <button onclick="verifyCertificate()">
+        Verify Certificate
+      </button>
     </div>
 
-    <div id="result" class="hidden">
+    <div class="verified-section" id="result">
 
-      <div class="verified">
-        <div class="badge">✓</div>
-        <h2>Certificate Verified</h2>
+      <div class="verified-icon">
+        ✓
       </div>
 
-      <div class="details">
+      <div class="verified-title">
+        Certificate Verified
+      </div>
 
-        <div class="row">
-          <div class="label">Certificate ID</div>
-          <div class="value" id="cid"></div>
+      <div class="detail-row">
+        <div class="label">Certificate ID</div>
+        <div class="value" id="cid"></div>
+      </div>
+
+      <div class="detail-row">
+        <div class="label">Participant Name</div>
+        <div class="value" id="pname"></div>
+      </div>
+
+      <div class="detail-row">
+        <div class="label">Event</div>
+        <div class="value" id="event"></div>
+      </div>
+
+      <div class="detail-row">
+        <div class="label">Issue Date</div>
+        <div class="value" id="date"></div>
+      </div>
+
+      <div class="detail-row">
+        <div class="label">Organization</div>
+        <div class="value" id="org"></div>
+      </div>
+
+      <div class="detail-row">
+        <div class="label">Verification Status</div>
+        <div class="value verified-status">
+          VERIFIED
         </div>
-
-        <div class="row">
-          <div class="label">Participant Name</div>
-          <div class="value">Lakshya Utreja</div>
-        </div>
-
-        <div class="row">
-          <div class="label">Event</div>
-          <div class="value">PROMPT BUILDER 2026</div>
-        </div>
-
-        <div class="row">
-          <div class="label">Issue Date</div>
-          <div class="value">20 February 2026</div>
-        </div>
-
-        <div class="row">
-          <div class="label">Organization</div>
-          <div class="value">LYNQUP PRIVATE LIMITED</div>
-        </div>
-
-        <div class="row">
-          <div class="label">Verification Status</div>
-          <div class="value" style="color:#15b86a;font-weight:bold;">
-            VERIFIED
-          </div>
-        </div>
-
       </div>
 
       <div class="footer">
-        This digital verification confirms that the certificate
-        is officially recorded in the verification system.
+        This certificate has been digitally verified by
+        LYNQUP PRIVATE LIMITED.
       </div>
 
     </div>
 
   </div>
 
- <script>
+  <script>
 
-  const certificates = {
+    // CERTIFICATE DATABASE
 
-    "PB26-110": {
-      name: "Lakshya Utreja",
-      event: "PROMPT BUILDER 2026"
-    },
+    const certificates = {
 
-    "PB26-111": {
-      name: "Rhea Tiwary",
-      event: "PROMPT BUILDER 2026"
+      "PB26-110": {
+        name: "Lakshya Utreja",
+        event: "PROMPT BUILDER 2026",
+        date: "20 February 2026",
+        organization: "LYNQUP PRIVATE LIMITED"
+      },
+
+      "PB26-107": {
+        name: "Rhea Tiwary",
+        event: "PROMPT BUILDER 2026",
+        date: "20 February 2026",
+        organization: "LYNQUP PRIVATE LIMITED"
+      }
+
+    };
+
+
+
+    // VERIFY FUNCTION
+
+    function verifyCertificate() {
+
+      let enteredId =
+        document.getElementById("certificateId")
+        .value
+        .trim();
+
+      if (certificates[enteredId]) {
+
+        let cert = certificates[enteredId];
+
+        document.getElementById("result")
+          .style.display = "block";
+
+        document.getElementById("cid")
+          .innerText = enteredId;
+
+        document.getElementById("pname")
+          .innerText = cert.name;
+
+        document.getElementById("event")
+          .innerText = cert.event;
+
+        document.getElementById("date")
+          .innerText = cert.date;
+
+        document.getElementById("org")
+          .innerText = cert.organization;
+
+      }
+
+      else {
+
+        alert("Certificate Not Found");
+
+        document.getElementById("result")
+          .style.display = "none";
+      }
     }
 
-  };
 
-  function verifyCertificate(){
 
-    let enteredId =
-      document.getElementById("certificateId").value.trim();
+    // AUTO VERIFY FROM URL
 
-    if(certificates[enteredId]){
+    const urlParams =
+      new URLSearchParams(window.location.search);
 
-      document.getElementById("result")
-      .classList.remove("hidden");
+    const certId = urlParams.get('id');
 
-      document.getElementById("cid")
-      .innerText = enteredId;
+    if (certId) {
 
-    } else {
+      document.getElementById("certificateId")
+        .value = certId;
 
-      alert("Certificate Not Found");
-
-      document.getElementById("result")
-      .classList.add("hidden");
+      verifyCertificate();
     }
-  }
 
-  // STEP 8 AUTO URL VERIFICATION
-
-  const urlParams =
-    new URLSearchParams(window.location.search);
-
-  const certId = urlParams.get('id');
-
-  if(certId){
-
-    document.getElementById("certificateId").value = certId;
-
-    verifyCertificate();
-  }
-
-</script>
+  </script>
 
 </body>
+
 </html>
